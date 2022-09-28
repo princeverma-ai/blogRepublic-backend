@@ -1,0 +1,26 @@
+{
+  "name": "blog-republic",
+  "version": "1.0.0",
+  "description": "backend for the blogRepublic application",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/princeverma-ai/blogRepublic-backend.git"
+  },
+  "author": "Prince Verma",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/princeverma-ai/blogRepublic-backend/issues"
+  },
+  "homepage": "https://github.com/princeverma-ai/blogRepublic-backend#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.6.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
