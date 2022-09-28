@@ -1,6 +1,6 @@
 const express=require('express');
 const cors = require('cors');
-
+const homeRouter=require('./routes/homeRouter')
 
 //----------------------------------->
 
@@ -12,7 +12,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-
+//routes
+app.use('/',homeRouter)
 
 //Export----------------------------->
 module.exports = app;
