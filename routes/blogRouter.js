@@ -1,12 +1,12 @@
 const express = require('express');
-const homeController = require('./../controllers/homeController')
+const blogController = require('./../controllers/blogController')
 //----------------------------------->
 
 //Router
 const Router = express.Router();
 
 
-Router.route('/').get(homeController.getData);
+Router.route('/').post(blogController.addBlog);
 
 
 
