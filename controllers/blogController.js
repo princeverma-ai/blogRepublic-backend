@@ -8,8 +8,10 @@ exports.addBlog = async (req, res) => {
         const blogCoverImage = req.body.blogCoverImage;
         const blogPostTime = req.body.blogPostTime || Date.now()
         const blogPostedBy = req.body.blogPostedBy;
+        const blogText = req.body.blogText;
+        const blogDescription = req.body.blogDescription;
 
-        const blogObject = { blogTitle, blogCoverImage, blogPostTime, blogPostedBy };
+        const blogObject = { blogTitle, blogCoverImage, blogPostTime, blogPostedBy, blogText, blogDescription };
 
         const blog = await BlogModel.create(blogObject);
 

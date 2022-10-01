@@ -7,6 +7,14 @@ const Schema = new mongoose.Schema({
         type: String,
         required: [true, "A Blog Title is required"]
     },
+    blogDescription: {
+        type: String,
+        required: [true, "A Blog Description is required"]
+    },
+    blogText: {
+        type: String,
+        required: [true, "The Blog Text is required"]
+    },
     blogCoverImage: {
         type: String,
         required: [true, "A Blog Cover Image is required"]
