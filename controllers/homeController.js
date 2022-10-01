@@ -3,10 +3,11 @@ const BlogModel = require('./../models/blogModel');
 //----------------------------------------------------------------------->
 exports.getData = async (req, res) => {
     try {
+        const blogs = await BlogModel.find().select('-__v -blogText');
 
-        res.status(200).json({
+        res.status(201).json({
             status: "Success",
-            message: "Got Data 😁"
+            Blogs: blogs
         })
 
     } catch (error) {

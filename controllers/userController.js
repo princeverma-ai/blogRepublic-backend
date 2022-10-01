@@ -3,10 +3,10 @@ const UserModel = require('./../models/userModel');
 //----------------------------------------------------------------------->
 exports.login = async (req, res) => {
     try {
-
+        const blogs = await BlogModel.find();
         res.status(200).json({
             status: "Success",
-            message: "Logged In"
+            blogs:blogs
         })
 
     } catch (error) {
@@ -31,7 +31,7 @@ exports.signup = async (req, res) => {
 
         const user = await UserModel.create(userObject);
 
-        res.status(200).json({
+        res.status(201).json({
             status: "Success",
             message: "Signed Up",
             User: user
