@@ -6,6 +6,7 @@ const imageController=require('../controllers/imageController');
 const Router = express.Router();
 
 Router.route('/').post(imageController.imageUpload.single('image'),imageController.addImage);
+Router.route('/:name').delete(imageController.deleteImage);
 Router.route('/stats').get(imageController.getStats);
 
 //Export----------------------------->
