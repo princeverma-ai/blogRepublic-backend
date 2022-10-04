@@ -8,7 +8,7 @@ dotenv.config({ path: './config.env' });
 
 //connection to database------------------------------------------->
 
-mongoose.connect(process.env.URIREMOTE, {
+mongoose.connect(process.env.URI, {
     useNewUrlParser: true
 }).then(() => {
     console.log("Connection to database eshtablished 👌");

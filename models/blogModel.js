@@ -23,10 +23,17 @@ const Schema = new mongoose.Schema({
     },
     draft:{
         type:Boolean,
-        default:false;
+        default:false
     }
 
 });
+
+//hooks----------------------------->
+Schema.pre('save', function (next) {
+    this.blogPostTime = Date.now();
+    
+    next();
+})
 
 
 //Model---------------------------->

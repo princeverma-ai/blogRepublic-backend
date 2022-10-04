@@ -6,12 +6,12 @@ exports.addBlog = async (req, res) => {
 
         const blogTitle = req.body.blogTitle;
         const blogCoverImage = req.body.blogCoverImage;
-        const blogPostTime = req.body.blogPostTime || Date.now()
         const blogPostedBy = req.body.blogPostedBy;
         const blogText = req.body.blogText;
         const blogDescription = req.body.blogDescription;
+        const draft = req.body.draft;
 
-        const blogObject = { blogTitle, blogCoverImage, blogPostTime, blogPostedBy, blogText, blogDescription };
+        const blogObject = { blogTitle, blogCoverImage, blogPostedBy, blogText, blogDescription,draft };
 
         const blog = await BlogModel.create(blogObject);
 
@@ -34,10 +34,11 @@ exports.addBlog = async (req, res) => {
 //----------------------------------------------------------------------->
 exports.getAllBlogs = async (req, res) => {
     try {
-        const blogs = await BlogModel.find();
+        const blogs = await BlogModel.find().select('-__v');
 
         res.status(201).json({
             status: "Success",
+            numberOfBlogs: blogs.length,
             Blogs: blogs
         })
 
