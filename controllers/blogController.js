@@ -11,7 +11,7 @@ exports.addBlog = async (req, res) => {
         const blogDescription = req.body.blogDescription;
         const draft = req.body.draft;
 
-        const blogObject = { blogTitle, blogCoverImage, blogPostedBy, blogText, blogDescription,draft };
+        const blogObject = { blogTitle, blogCoverImage, blogPostedBy, blogText, blogDescription, draft };
 
         const blog = await BlogModel.create(blogObject);
 
@@ -34,8 +34,14 @@ exports.addBlog = async (req, res) => {
 //----------------------------------------------------------------------->
 exports.getAllBlogs = async (req, res) => {
     try {
-        const blogs = await BlogModel.find().select('-__v');
+        let query;
+        if (req.query.search) {
+            query = BlogModel.find({ blogTitle:{ "$regex": req.query.search, "$options": "i" }, draft: false }).select('-__v -draft');
+        } else {
+            query = BlogModel.find({ draft: false }).select('-__v -draft');
+        }
 
+        const blogs = await query;
         res.status(201).json({
             status: "Success",
             numberOfBlogs: blogs.length,
@@ -72,10 +78,10 @@ exports.getBlog = async (req, res) => {
 //----------------------------------------------------------------------->
 exports.updateBlog = async (req, res) => {
     try {
-        const blog = await BlogModel.findByIdAndUpdate(req.params.id,req.body, {
+        const blog = await BlogModel.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true,
-          });
+        });
         res.status(201).json({
             status: "Success",
             Blog: blog
