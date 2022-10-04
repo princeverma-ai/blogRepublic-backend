@@ -20,6 +20,10 @@ const Schema = new mongoose.Schema({
     },
     blogPostedBy: {
         type: String,
+    },
+    draft:{
+        type:Boolean,
+        default:false;
     }
 
 });
