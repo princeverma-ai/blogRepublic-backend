@@ -42,7 +42,7 @@ exports.getAllBlogs = async (req, res) => {
         }
 
         const blogs = await query;
-        res.status(201).json({
+        res.status(200).json({
             status: "Success",
             numberOfBlogs: blogs.length,
             Blogs: blogs
@@ -61,7 +61,7 @@ exports.getAllBlogs = async (req, res) => {
 exports.getBlog = async (req, res) => {
     try {
         const blog = await BlogModel.findById(req.params.id);
-        res.status(201).json({
+        res.status(200).json({
             status: "Success",
             Blog: blog
         })

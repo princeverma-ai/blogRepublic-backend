@@ -5,21 +5,27 @@ const mongoose = require('mongoose');
 const Schema = new mongoose.Schema({
     blogTitle: {
         type: String,
+        default: "Untitled"
     },
     blogDescription: {
         type: String,
+        default: "No description"
     },
     blogText: {
         type: String,
+        default: "No text"
     },
     blogCoverImage: {
         type: String,
+        default:"No image"
     },
     blogPostTime: {
         type: Date,
+        
     },
     blogPostedBy: {
         type: String,
+        default: "Anonymous"
     },
     draft:{
         type:Boolean,
