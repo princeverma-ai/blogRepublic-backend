@@ -27,6 +27,10 @@ const Schema = new mongoose.Schema({
         type: String,
         default: "Anonymous"
     },
+    blogPostedByImage:{
+        type: String,
+        default: "No image"
+    },
     draft:{
         type:Boolean,
         default:false
