@@ -23,6 +23,7 @@ const Schema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide the photo"],
     },
+    blogs:Array
 });
 
 //Hooks------------------------------------------------------------------>

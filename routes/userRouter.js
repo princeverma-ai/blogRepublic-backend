@@ -13,7 +13,7 @@ Router.route('/logout').get(userController.logout);
 Router.use(userController.protect);
 
 Router.route('/').get(userController.getAllUsers);
-Router.route('/:id').get(userController.getUser).post(userController.updateUser).delete(userController.deleteUser);
+Router.route('/:id').get(userController.getUser).patch(userController.updateUser).delete(userController.deleteUser);
 
 
 

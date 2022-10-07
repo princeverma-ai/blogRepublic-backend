@@ -1,19 +1,24 @@
 const BlogModel = require('./../models/blogModel');
-
+const UserModel=require('./../models/userModel');
 //----------------------------------------------------------------------->
 exports.addBlog = async (req, res) => {
     try {
 
         const blogTitle = req.body.blogTitle;
         const blogCoverImage = req.body.blogCoverImage;
-        const blogPostedBy = req.body.blogPostedBy;
+        const blogPostedByUserName = req.body.blogPostedByUserName;
+        const blogPostedByUserImage = req.body.blogPostedByUserImage;
+        const blogPostedByUserId = req.body.blogPostedByUserId;
         const blogText = req.body.blogText;
         const blogDescription = req.body.blogDescription;
+
         const draft = req.body.draft;
 
-        const blogObject = { blogTitle, blogCoverImage, blogPostedBy, blogText, blogDescription, draft };
+        const blogObject = { blogTitle, blogCoverImage, blogPostedByUserName, blogText, blogDescription, draft,blogPostedByUserImage,blogPostedByUserId };
 
         const blog = await BlogModel.create(blogObject);
+
+        const user=await UserModel.findByIdAndUpdate(blogPostedByUserId,{$push:{blogs:blog._id}});  
 
 
         res.status(201).json({

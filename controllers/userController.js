@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const UserModel = require('./../models/userModel');
+const BlogModel = require('./../models/blogModel');
 
 //cookie options
 const cookieOptions = {
@@ -187,8 +188,15 @@ exports.getAllUsers = async (req, res) => {
 //Get user------------------------------------------------------->
 exports.getUser = async (req, res) => {
     try {
-        const user = await UserModel.findById(req.params.id);
-
+        let user;
+        if(req.query.blogs=='true'){
+            user = await UserModel.findById(req.params.id);
+            const userBlogsPromises=user.blogs.map(async id=> await BlogModel.findById(id));
+            user.blogs=await Promise.all(userBlogsPromises)
+        }else{
+         user = await UserModel.findById(req.params.id).select('-blogs');
+        }
+        
         res.status(200).json({
             status: "Success",
             data: {

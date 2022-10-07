@@ -23,13 +23,16 @@ const Schema = new mongoose.Schema({
         type: Date,
         
     },
-    blogPostedBy: {
+    blogPostedByUserName: {
         type: String,
         default: "Anonymous"
     },
-    blogPostedByImage:{
+    blogPostedByUserImage:{
         type: String,
         default: "No image"
+    },
+    blogPostedByUserId:{
+        type: String,
     },
     draft:{
         type:Boolean,
