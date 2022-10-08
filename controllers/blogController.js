@@ -106,7 +106,7 @@ exports.deleteBlog = async (req, res) => {
     try {
         const blog = await BlogModel.findByIdAndDelete(req.params.id);
         await UserModel.findByIdAndUpdate(blog.blogPostedByUserId,{$pull:{blogs:blog._id}});
-        res.status(200).json({
+        res.status(204).json({
             status: "Success",
             Blog: blog
         })
