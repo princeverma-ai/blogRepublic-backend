@@ -22,9 +22,16 @@ app.use(express.json());
 app.use(mongoSanitize())
 app.use(xss());
 app.use(hpp());
-app.use(compression())
+app.use(compression()) 
 
-app.use(cors());
+const corsOptions = {
+    "origin": "*",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "preflightContinue": false,
+    "optionsSuccessStatus": 204
+}
+
+app.use(cors(corsOptions));
 app.use(express.static('public'));
 
 //routes
