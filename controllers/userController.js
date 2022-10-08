@@ -65,7 +65,7 @@ exports.login = async (req, res) => {
         }
 
         //finding the user in database
-        const user = await UserModel.findOne({ email }).select('+password');
+        const user = await UserModel.findOne({ email }).select('+password -blogs');
 
         //if user not found and password is incorrect
         if (!user || !(await user.correctPassword(password, user.password))) {
